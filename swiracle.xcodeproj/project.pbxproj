@@ -1,0 +1,648 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5434C19427331B72008EAE58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19327331B72008EAE58 /* HomeView.swift */; };
+		5434C19627331B8A008EAE58 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19527331B8A008EAE58 /* PopularView.swift */; };
+		5434C19827331BA5008EAE58 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19727331BA5008EAE58 /* NotificationsView.swift */; };
+		5434C19A27331BB5008EAE58 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19927331BB5008EAE58 /* ProfileView.swift */; };
+		545F54602732F384002F9100 /* swiracleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F545F2732F384002F9100 /* swiracleApp.swift */; };
+		545F54622732F384002F9100 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F54612732F384002F9100 /* ContentView.swift */; };
+		545F54642732F389002F9100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545F54632732F389002F9100 /* Assets.xcassets */; };
+		545F54672732F389002F9100 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545F54662732F389002F9100 /* Preview Assets.xcassets */; };
+		545F54712732F38A002F9100 /* swiracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F54702732F38A002F9100 /* swiracleTests.swift */; };
+		545F547B2732F38A002F9100 /* swiracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547A2732F38A002F9100 /* swiracleUITests.swift */; };
+		545F547D2732F38A002F9100 /* swiracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */; };
+		545F548B2732F3FA002F9100 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F548A2732F3FA002F9100 /* Post.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		545F546D2732F38A002F9100 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 545F54542732F384002F9100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 545F545B2732F384002F9100;
+			remoteInfo = swiracle;
+		};
+		545F54772732F38A002F9100 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 545F54542732F384002F9100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 545F545B2732F384002F9100;
+			remoteInfo = swiracle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5434C19327331B72008EAE58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5434C19527331B8A008EAE58 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		5434C19727331BA5008EAE58 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		5434C19927331BB5008EAE58 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		545F545C2732F384002F9100 /* Swiracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiracle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		545F545F2732F384002F9100 /* swiracleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleApp.swift; sourceTree = "<group>"; };
+		545F54612732F384002F9100 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		545F54632732F389002F9100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		545F54662732F389002F9100 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		545F546C2732F38A002F9100 /* SwiracleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiracleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		545F54702732F38A002F9100 /* swiracleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleTests.swift; sourceTree = "<group>"; };
+		545F54762732F38A002F9100 /* SwiracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		545F547A2732F38A002F9100 /* swiracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITests.swift; sourceTree = "<group>"; };
+		545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		545F548A2732F3FA002F9100 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		545F54592732F384002F9100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F54692732F38A002F9100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F54732732F38A002F9100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		545F54532732F384002F9100 = {
+			isa = PBXGroup;
+			children = (
+				545F545E2732F384002F9100 /* swiracle */,
+				545F546F2732F38A002F9100 /* swiracleTests */,
+				545F54792732F38A002F9100 /* swiracleUITests */,
+				545F545D2732F384002F9100 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		545F545D2732F384002F9100 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				545F545C2732F384002F9100 /* Swiracle.app */,
+				545F546C2732F38A002F9100 /* SwiracleTests.xctest */,
+				545F54762732F38A002F9100 /* SwiracleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		545F545E2732F384002F9100 /* swiracle */ = {
+			isa = PBXGroup;
+			children = (
+				545F548C2732F71A002F9100 /* Views */,
+				545F54892732F39D002F9100 /* Models */,
+				545F545F2732F384002F9100 /* swiracleApp.swift */,
+				545F54632732F389002F9100 /* Assets.xcassets */,
+				545F54652732F389002F9100 /* Preview Content */,
+			);
+			path = swiracle;
+			sourceTree = "<group>";
+		};
+		545F54652732F389002F9100 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				545F54662732F389002F9100 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		545F546F2732F38A002F9100 /* swiracleTests */ = {
+			isa = PBXGroup;
+			children = (
+				545F54702732F38A002F9100 /* swiracleTests.swift */,
+			);
+			path = swiracleTests;
+			sourceTree = "<group>";
+		};
+		545F54792732F38A002F9100 /* swiracleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				545F547A2732F38A002F9100 /* swiracleUITests.swift */,
+				545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */,
+			);
+			path = swiracleUITests;
+			sourceTree = "<group>";
+		};
+		545F54892732F39D002F9100 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				545F548A2732F3FA002F9100 /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		545F548C2732F71A002F9100 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				545F54612732F384002F9100 /* ContentView.swift */,
+				5434C19327331B72008EAE58 /* HomeView.swift */,
+				5434C19527331B8A008EAE58 /* PopularView.swift */,
+				5434C19727331BA5008EAE58 /* NotificationsView.swift */,
+				5434C19927331BB5008EAE58 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		545F545B2732F384002F9100 /* Swiracle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 545F54802732F38A002F9100 /* Build configuration list for PBXNativeTarget "Swiracle" */;
+			buildPhases = (
+				545F54582732F384002F9100 /* Sources */,
+				545F54592732F384002F9100 /* Frameworks */,
+				545F545A2732F384002F9100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swiracle;
+			productName = swiracle;
+			productReference = 545F545C2732F384002F9100 /* Swiracle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		545F546B2732F38A002F9100 /* SwiracleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 545F54832732F38A002F9100 /* Build configuration list for PBXNativeTarget "SwiracleTests" */;
+			buildPhases = (
+				545F54682732F38A002F9100 /* Sources */,
+				545F54692732F38A002F9100 /* Frameworks */,
+				545F546A2732F38A002F9100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				545F546E2732F38A002F9100 /* PBXTargetDependency */,
+			);
+			name = SwiracleTests;
+			productName = swiracleTests;
+			productReference = 545F546C2732F38A002F9100 /* SwiracleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		545F54752732F38A002F9100 /* SwiracleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 545F54862732F38A002F9100 /* Build configuration list for PBXNativeTarget "SwiracleUITests" */;
+			buildPhases = (
+				545F54722732F38A002F9100 /* Sources */,
+				545F54732732F38A002F9100 /* Frameworks */,
+				545F54742732F38A002F9100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				545F54782732F38A002F9100 /* PBXTargetDependency */,
+			);
+			name = SwiracleUITests;
+			productName = swiracleUITests;
+			productReference = 545F54762732F38A002F9100 /* SwiracleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		545F54542732F384002F9100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					545F545B2732F384002F9100 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					545F546B2732F38A002F9100 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 545F545B2732F384002F9100;
+					};
+					545F54752732F38A002F9100 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 545F545B2732F384002F9100;
+					};
+				};
+			};
+			buildConfigurationList = 545F54572732F384002F9100 /* Build configuration list for PBXProject "swiracle" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 545F54532732F384002F9100;
+			productRefGroup = 545F545D2732F384002F9100 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				545F545B2732F384002F9100 /* Swiracle */,
+				545F546B2732F38A002F9100 /* SwiracleTests */,
+				545F54752732F38A002F9100 /* SwiracleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		545F545A2732F384002F9100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F54672732F389002F9100 /* Preview Assets.xcassets in Resources */,
+				545F54642732F389002F9100 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F546A2732F38A002F9100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F54742732F38A002F9100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		545F54582732F384002F9100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F54622732F384002F9100 /* ContentView.swift in Sources */,
+				5434C19627331B8A008EAE58 /* PopularView.swift in Sources */,
+				5434C19427331B72008EAE58 /* HomeView.swift in Sources */,
+				545F54602732F384002F9100 /* swiracleApp.swift in Sources */,
+				545F548B2732F3FA002F9100 /* Post.swift in Sources */,
+				5434C19A27331BB5008EAE58 /* ProfileView.swift in Sources */,
+				5434C19827331BA5008EAE58 /* NotificationsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F54682732F38A002F9100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F54712732F38A002F9100 /* swiracleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545F54722732F38A002F9100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				545F547D2732F38A002F9100 /* swiracleUITestsLaunchTests.swift in Sources */,
+				545F547B2732F38A002F9100 /* swiracleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		545F546E2732F38A002F9100 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 545F545B2732F384002F9100 /* Swiracle */;
+			targetProxy = 545F546D2732F38A002F9100 /* PBXContainerItemProxy */;
+		};
+		545F54782732F38A002F9100 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 545F545B2732F384002F9100 /* Swiracle */;
+			targetProxy = 545F54772732F38A002F9100 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		545F547E2732F38A002F9100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		545F547F2732F38A002F9100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		545F54812732F38A002F9100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"swiracle/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracle;
+				PRODUCT_NAME = Swiracle;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		545F54822732F38A002F9100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"swiracle/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracle;
+				PRODUCT_NAME = Swiracle;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		545F54842732F38A002F9100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiracle.app/swiracle";
+			};
+			name = Debug;
+		};
+		545F54852732F38A002F9100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swiracle.app/swiracle";
+			};
+			name = Release;
+		};
+		545F54872732F38A002F9100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = swiracle;
+			};
+			name = Debug;
+		};
+		545F54882732F38A002F9100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GGJ9U98;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mynimef.swiracleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = swiracle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		545F54572732F384002F9100 /* Build configuration list for PBXProject "swiracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F547E2732F38A002F9100 /* Debug */,
+				545F547F2732F38A002F9100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		545F54802732F38A002F9100 /* Build configuration list for PBXNativeTarget "Swiracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F54812732F38A002F9100 /* Debug */,
+				545F54822732F38A002F9100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		545F54832732F38A002F9100 /* Build configuration list for PBXNativeTarget "SwiracleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F54842732F38A002F9100 /* Debug */,
+				545F54852732F38A002F9100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		545F54862732F38A002F9100 /* Build configuration list for PBXNativeTarget "SwiracleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				545F54872732F38A002F9100 /* Debug */,
+				545F54882732F38A002F9100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 545F54542732F384002F9100 /* Project object */;
+}
