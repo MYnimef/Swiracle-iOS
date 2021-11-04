@@ -10,6 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var getData = DataImport()
     
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+        UITableView.appearance().backgroundColor = UIColor(named: "BackgroundColor")
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -24,7 +29,7 @@ struct HomeView: View {
                 likesAmount: i.likesAmount,
                 commentsAmount: i.commentsAmount)
             }
-            .padding()
+            .cornerRadius(10)
         }
     }
 }
@@ -37,19 +42,23 @@ struct PostView: View {
     let commentsAmount: Int
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(username)
-            }
-            HStack {
-                Text(title)
-                Text(String(price))
-            }
-            HStack {
-                Text(String(likesAmount))
-                Text(String(commentsAmount))
+        Section {
+            VStack {
+                HStack {
+                    Text(username)
+                }
+                HStack {
+                    Text(title)
+                    Text(String(price))
+                }
+                HStack {
+                    Text(String(likesAmount))
+                    Text(String(commentsAmount))
+                }
             }
         }
+        .listRowBackground(Color.white)
+        .foregroundColor(.black)
     }
 }
 

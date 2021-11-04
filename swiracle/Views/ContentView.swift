@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        //UITabBar.appearance().barTintColor = .black
+        //UITabBar.appearance().tintColor = .blue
+        UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
+        UITabBar.appearance().clipsToBounds = true
+        UITabBar.appearance().isTranslucent = false
+    }
+    
     var body: some View {
         TabView {
             HomeView()
