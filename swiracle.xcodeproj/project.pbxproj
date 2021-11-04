@@ -19,6 +19,7 @@
 		545F547B2732F38A002F9100 /* swiracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547A2732F38A002F9100 /* swiracleUITests.swift */; };
 		545F547D2732F38A002F9100 /* swiracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */; };
 		545F548B2732F3FA002F9100 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F548A2732F3FA002F9100 /* Post.swift */; };
+		54D38EC82733DEE900C30480 /* Lokalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D38ECA2733DEE900C30480 /* Lokalization.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		545F547A2732F38A002F9100 /* swiracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITests.swift; sourceTree = "<group>"; };
 		545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		545F548A2732F3FA002F9100 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		54D38EC92733DEE900C30480 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Lokalization.strings; sourceTree = "<group>"; };
+		54D38ECB2733DF0F00C30480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Lokalization.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		545F545E2732F384002F9100 /* swiracle */ = {
 			isa = PBXGroup;
 			children = (
+				54D38EC52733DEC000C30480 /* Strings */,
 				545F548C2732F71A002F9100 /* Views */,
 				545F54892732F39D002F9100 /* Models */,
 				545F545F2732F384002F9100 /* swiracleApp.swift */,
@@ -156,6 +160,14 @@
 				5434C19927331BB5008EAE58 /* ProfileView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		54D38EC52733DEC000C30480 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				54D38ECA2733DEE900C30480 /* Lokalization.strings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +256,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 545F54532732F384002F9100;
 			productRefGroup = 545F545D2732F384002F9100 /* Products */;
@@ -264,6 +277,7 @@
 			files = (
 				545F54672732F389002F9100 /* Preview Assets.xcassets in Resources */,
 				545F54642732F389002F9100 /* Assets.xcassets in Resources */,
+				54D38EC82733DEE900C30480 /* Lokalization.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,11 +344,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		54D38ECA2733DEE900C30480 /* Lokalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				54D38EC92733DEE900C30480 /* en */,
+				54D38ECB2733DF0F00C30480 /* ru */,
+			);
+			name = Lokalization.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		545F547E2732F38A002F9100 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -396,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

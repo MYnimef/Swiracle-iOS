@@ -1,0 +1,13 @@
+/* 
+  localization_en.strings
+  swiracle
+
+  Created by Ivan Markov on 04.11.2021.
+  
+*/
+
+"Home" = "Home";
+"Popular" = "Popular";
+"Create" = "Create";
+"Notifications" = "Notifications";
+"Profile" = "Profile";

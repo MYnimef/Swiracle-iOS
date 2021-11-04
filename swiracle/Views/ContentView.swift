@@ -21,27 +21,27 @@ struct ContentView: View {
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
-                    Text("Home")
+                    Text(NSLocalizedString("Home", comment: ""))
                 }
             PopularView()
                 .tabItem {
                     Image(systemName: "star.fill")
-                    Text("Popular")
+                    Text(NSLocalizedString("Popular", comment: ""))
                 }
             CreateView()
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
-                    Text("Create")
+                    Text(NSLocalizedString("Create", comment: ""))
                 }
             NotificationsView()
                 .tabItem {
                     Image(systemName: "bell.fill")
-                    Text("Notifications")
+                    Text(NSLocalizedString("Notifications", comment: ""))
                 }
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
-                    Text("Profile")
+                    Text(NSLocalizedString("Profile", comment: ""))
                 }
         }
     }
