@@ -7,56 +7,56 @@
 
 import Foundation
 
-public struct PostInfo: Identifiable, Decodable {
+public struct PostInfoVM: Identifiable, Decodable {
     public let id: String
     public let username: String
     public let title: String
     public let likesAmount: Int
     public let commentsAmount: Int
-    public let price: Price
+    public let price: PriceVM
     public let isLiked: Bool
 }
 
-public struct Price: Decodable {
+public struct PriceVM: Decodable {
     public let eur: Int
     public let usd: Int
     public let rub: Int
 }
 
-public struct PostDetails: Decodable {
+public struct PostDetailsVM: Decodable {
     public let description: String
-    public let clothes: [ClothesElement]
+    public let clothes: [ClothesElementVM]
 }
 
-public struct ClothesElement: Decodable {
+public struct ClothesElementVM: Decodable {
     public let urlId: String
     public let brand: String
     public let description: String
-    public let price: Price
+    public let price: PriceVM
 }
 
-public struct PostImages: Decodable {
+public struct PostImagesVM: Decodable {
     public let imageUrl: String
     public let postId: String
 }
 
-public struct Post: Decodable {
-    public let postInfo: PostInfo
-    public let images: [PostImages]
+public struct PostVM: Decodable {
+    public let postInfo: PostInfoVM
+    public let images: [PostImagesVM]
 }
 
-class DataImport : ObservableObject {
-    @Published var data = [PostInfo]()
+class DataImport: ObservableObject {
+    @Published var data = [PostInfoVM]()
     
     init() {
         let session = URLSession(configuration: .default)
         session.dataTask(with: URL(string: "https://swiracle.herokuapp.com/posts")!) { (data, _, _) in
             do {
-                let fetch = try JSONDecoder().decode([Post].self, from: data!)
+                let fetch = try JSONDecoder().decode([PostVM].self, from: data!)
                 
                 DispatchQueue.main.async {
                     let post = fetch
-                    var postInfo: [PostInfo] = []
+                    var postInfo: [PostInfoVM] = []
                     for i in post {
                         postInfo.append(i.postInfo)
                     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var getData = DataImport()
+    @ObservedObject var viewModel = HomeViewModel()
     
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -22,15 +22,19 @@ struct HomeView: View {
                 Text("Following")
             }
             .padding()
-            List(getData.data) { i in PostView(
+            List(viewModel.posts) { i in PostView(
                 username: i.username,
                 title: i.title,
-                price: i.price.rub,
+                price: i.price,
                 likesAmount: i.likesAmount,
                 commentsAmount: i.commentsAmount)
             }
             .cornerRadius(10)
         }
+        .onAppear(perform: {
+            viewModel.save()
+            viewModel.getAllPosts()
+        })
     }
 }
 
