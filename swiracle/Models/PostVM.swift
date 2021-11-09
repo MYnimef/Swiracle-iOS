@@ -45,10 +45,10 @@ public struct PostVM: Decodable {
     public let images: [PostImagesVM]
 }
 
-class DataImport: ObservableObject {
+class DataImport {
     @Published var data = [PostInfoVM]()
     
-    init() {
+    func download() {
         let session = URLSession(configuration: .default)
         session.dataTask(with: URL(string: "https://swiracle.herokuapp.com/posts")!) { (data, _, _) in
             do {

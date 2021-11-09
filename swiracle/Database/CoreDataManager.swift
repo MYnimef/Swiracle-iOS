@@ -9,9 +9,9 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    let persistentContainer: NSPersistentContainer
     public static let shared = CoreDataManager()
-    var viewContext: NSManagedObjectContext {
+    private let persistentContainer: NSPersistentContainer
+    public var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
@@ -24,20 +24,41 @@ class CoreDataManager {
         }
     }
     
-    func save() {
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch {
-                viewContext.rollback()
-                print(error)
+    private var network = DataImport()
+    
+    func updateAllPosts() {
+        network.$data.sink { data in
+            self.deleteAllPosts()
+            
+            var posts = [Post]()
+            for i in data {
+                let post = Post(context: self.viewContext)
+                post.id = i.id
+                post.username = i.username
+                post.title = i.title
+                post.price = Int64(i.price.rub)
+                post.likesAmount = Int64(i.likesAmount)
+                post.commentsAmount = Int64(i.commentsAmount)
+                post.isLiked = false
+                
+                posts.append(post)
+            }
+                
+            if self.viewContext.hasChanges {
+                do {
+                    try self.viewContext.save()
+                } catch {
+                    self.viewContext.rollback()
+                    print(error)
+                }
             }
         }
+        network.download()
     }
     
     func deleteAllPosts() {
-        for i in getAllPosts() {
-            viewContext.delete(i)
+        for post in getAllPosts() {
+            viewContext.delete(post)
         }
     }
     

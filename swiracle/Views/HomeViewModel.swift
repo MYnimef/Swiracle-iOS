@@ -10,30 +10,14 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var posts: [PostViewModel] = []
-    @ObservedObject var network = DataImport()
+    let manager = CoreDataManager.shared
     
     func getAllPosts() {
-        posts = CoreDataManager.shared.getAllPosts().map(PostViewModel.init)
+        posts = manager.getAllPosts().map(PostViewModel.init)
     }
     
     func save() {
-        CoreDataManager.shared.deleteAllPosts()
-        
-        var posts = [Post]()
-        for i in network.data {
-            let post = Post(context: CoreDataManager.shared.viewContext)
-            post.id = i.id
-            post.username = i.username
-            post.title = i.title
-            post.price = Int64(i.price.rub)
-            post.likesAmount = Int64(i.likesAmount)
-            post.commentsAmount = Int64(i.commentsAmount)
-            post.isLiked = false
-            
-            posts.append(post)
-        }
-            
-        CoreDataManager.shared.save()
+        manager.updateAllPosts()
     }
 }
 
