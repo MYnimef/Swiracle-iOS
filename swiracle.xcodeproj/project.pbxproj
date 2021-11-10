@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		54310A2A273AD07400C57CB9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54310A29273AD07400C57CB9 /* CoreDataManager.swift */; };
 		54310A2D273AD2DD00C57CB9 /* SwiracleModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54310A2B273AD2DD00C57CB9 /* SwiracleModels.xcdatamodeld */; };
-		54310A2F273AE13100C57CB9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54310A2E273AE13100C57CB9 /* HomeViewModel.swift */; };
 		5434C19427331B72008EAE58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19327331B72008EAE58 /* HomeView.swift */; };
 		5434C19627331B8A008EAE58 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19527331B8A008EAE58 /* PopularView.swift */; };
 		5434C19827331BA5008EAE58 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434C19727331BA5008EAE58 /* NotificationsView.swift */; };
@@ -21,7 +20,7 @@
 		545F54712732F38A002F9100 /* swiracleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F54702732F38A002F9100 /* swiracleTests.swift */; };
 		545F547B2732F38A002F9100 /* swiracleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547A2732F38A002F9100 /* swiracleUITests.swift */; };
 		545F547D2732F38A002F9100 /* swiracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */; };
-		545F548B2732F3FA002F9100 /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F548A2732F3FA002F9100 /* PostVM.swift */; };
+		545F548B2732F3FA002F9100 /* PostsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F548A2732F3FA002F9100 /* PostsGetter.swift */; };
 		54D38EC82733DEE900C30480 /* Lokalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D38ECA2733DEE900C30480 /* Lokalization.strings */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 /* Begin PBXFileReference section */
 		54310A29273AD07400C57CB9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		54310A2C273AD2DD00C57CB9 /* SwiracleModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiracleModels.xcdatamodel; sourceTree = "<group>"; };
-		54310A2E273AE13100C57CB9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5434C19327331B72008EAE58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5434C19527331B8A008EAE58 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		5434C19727331BA5008EAE58 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
@@ -60,7 +58,7 @@
 		545F54762732F38A002F9100 /* SwiracleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiracleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		545F547A2732F38A002F9100 /* swiracleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITests.swift; sourceTree = "<group>"; };
 		545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiracleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		545F548A2732F3FA002F9100 /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
+		545F548A2732F3FA002F9100 /* PostsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGetter.swift; sourceTree = "<group>"; };
 		54D38EC92733DEE900C30480 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Lokalization.strings; sourceTree = "<group>"; };
 		54D38ECB2733DF0F00C30480 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Lokalization.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +123,7 @@
 				54310A28273AD05000C57CB9 /* Database */,
 				54D38EC52733DEC000C30480 /* Strings */,
 				545F548C2732F71A002F9100 /* Views */,
-				545F54892732F39D002F9100 /* Models */,
+				545F54892732F39D002F9100 /* Network */,
 				545F545F2732F384002F9100 /* swiracleApp.swift */,
 				545F54632732F389002F9100 /* Assets.xcassets */,
 				545F54652732F389002F9100 /* Preview Content */,
@@ -158,12 +156,12 @@
 			path = swiracleUITests;
 			sourceTree = "<group>";
 		};
-		545F54892732F39D002F9100 /* Models */ = {
+		545F54892732F39D002F9100 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				545F548A2732F3FA002F9100 /* PostVM.swift */,
+				545F548A2732F3FA002F9100 /* PostsGetter.swift */,
 			);
-			path = Models;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		545F548C2732F71A002F9100 /* Views */ = {
@@ -171,7 +169,6 @@
 			children = (
 				545F54612732F384002F9100 /* ContentView.swift */,
 				5434C19327331B72008EAE58 /* HomeView.swift */,
-				54310A2E273AE13100C57CB9 /* HomeViewModel.swift */,
 				5434C19527331B8A008EAE58 /* PopularView.swift */,
 				5434C19727331BA5008EAE58 /* NotificationsView.swift */,
 				5434C19927331BB5008EAE58 /* ProfileView.swift */,
@@ -322,10 +319,9 @@
 				545F54622732F384002F9100 /* ContentView.swift in Sources */,
 				54310A2D273AD2DD00C57CB9 /* SwiracleModels.xcdatamodeld in Sources */,
 				5434C19627331B8A008EAE58 /* PopularView.swift in Sources */,
-				54310A2F273AE13100C57CB9 /* HomeViewModel.swift in Sources */,
 				5434C19427331B72008EAE58 /* HomeView.swift in Sources */,
 				545F54602732F384002F9100 /* swiracleApp.swift in Sources */,
-				545F548B2732F3FA002F9100 /* PostVM.swift in Sources */,
+				545F548B2732F3FA002F9100 /* PostsGetter.swift in Sources */,
 				5434C19A27331BB5008EAE58 /* ProfileView.swift in Sources */,
 				54310A2A273AD07400C57CB9 /* CoreDataManager.swift in Sources */,
 				5434C19827331BA5008EAE58 /* NotificationsView.swift in Sources */,

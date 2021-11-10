@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    @FetchRequest(entity: Post.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
+    var postsDB: FetchedResults<Post>
     
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
         UITableView.appearance().backgroundColor = UIColor(named: "BackgroundColor")
+        
+        CoreDataManager.shared.downloadAllPosts()
     }
     
     var body: some View {
@@ -22,19 +25,18 @@ struct HomeView: View {
                 Text("Following")
             }
             .padding()
-            List(viewModel.posts) { i in PostView(
-                username: i.username,
-                title: i.title,
-                price: i.price,
-                likesAmount: i.likesAmount,
-                commentsAmount: i.commentsAmount)
+            List (self.postsDB, id: \.id) { i in PostView(
+                username: i.username ?? "",
+                title: i.title ?? "",
+                price: Int(i.price),
+                likesAmount: Int(i.likesAmount),
+                commentsAmount: Int(i.commentsAmount))
+            }
+            .refreshable {
+                CoreDataManager.shared.downloadAllPosts()
             }
             .cornerRadius(10)
         }
-        .onAppear(perform: {
-            viewModel.save()
-            viewModel.getAllPosts()
-        })
     }
 }
 

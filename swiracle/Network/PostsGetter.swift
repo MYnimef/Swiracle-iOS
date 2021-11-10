@@ -7,64 +7,66 @@
 
 import Foundation
 
-public struct PostInfoVM: Identifiable, Decodable {
+public struct PostInfoJSON: Identifiable, Decodable {
     public let id: String
     public let username: String
     public let title: String
     public let likesAmount: Int
     public let commentsAmount: Int
-    public let price: PriceVM
+    public let price: PriceJSON
     public let isLiked: Bool
 }
 
-public struct PriceVM: Decodable {
+public struct PriceJSON: Decodable {
     public let eur: Int
     public let usd: Int
     public let rub: Int
 }
 
-public struct PostDetailsVM: Decodable {
+public struct PostDetailsJSON: Decodable {
     public let description: String
-    public let clothes: [ClothesElementVM]
+    public let clothes: [ClothesElementJSON]
 }
 
-public struct ClothesElementVM: Decodable {
+public struct ClothesElementJSON: Decodable {
     public let urlId: String
     public let brand: String
     public let description: String
-    public let price: PriceVM
+    public let price: PriceJSON
 }
 
-public struct PostImagesVM: Decodable {
+public struct PostImagesJSON: Decodable {
     public let imageUrl: String
     public let postId: String
 }
 
-public struct PostVM: Decodable {
-    public let postInfo: PostInfoVM
-    public let images: [PostImagesVM]
+public struct PostJSON: Decodable {
+    public let postInfo: PostInfoJSON
+    public let images: [PostImagesJSON]
 }
 
-class DataImport {
-    @Published var data = [PostInfoVM]()
-    
+class PostsGetter {
     func download() {
         let session = URLSession(configuration: .default)
         session.dataTask(with: URL(string: "https://swiracle.herokuapp.com/posts")!) { (data, _, _) in
             do {
-                let fetch = try JSONDecoder().decode([PostVM].self, from: data!)
+                let fetch = try JSONDecoder().decode([PostJSON].self, from: data!)
                 
                 DispatchQueue.main.async {
                     let post = fetch
-                    var postInfo: [PostInfoVM] = []
+                    var postInfo = [PostInfoJSON]()
                     for i in post {
                         postInfo.append(i.postInfo)
                     }
-                    self.data = postInfo
+                    self.sendToDB(posts: postInfo)
                 }
             } catch {
                 print(error)
             }
         }.resume()
+    }
+    
+    func sendToDB(posts: [PostInfoJSON]) {
+        CoreDataManager.shared.updateAllPosts(data: posts)
     }
 }

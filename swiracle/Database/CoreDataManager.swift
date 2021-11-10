@@ -24,36 +24,37 @@ class CoreDataManager {
         }
     }
     
-    private var network = DataImport()
+    private var network = PostsGetter()
     
-    func updateAllPosts() {
-        network.$data.sink { data in
-            self.deleteAllPosts()
+    func downloadAllPosts() {
+        network.download()
+    }
+    
+    func updateAllPosts(data: [PostInfoJSON]) {
+        self.deleteAllPosts()
             
-            var posts = [Post]()
-            for i in data {
-                let post = Post(context: self.viewContext)
-                post.id = i.id
-                post.username = i.username
-                post.title = i.title
-                post.price = Int64(i.price.rub)
-                post.likesAmount = Int64(i.likesAmount)
-                post.commentsAmount = Int64(i.commentsAmount)
-                post.isLiked = false
+        var posts = [Post]()
+        for i in data {
+            let post = Post(context: self.viewContext)
+            post.id = i.id
+            post.username = i.username
+            post.title = i.title
+            post.price = Int64(i.price.rub)
+            post.likesAmount = Int64(i.likesAmount)
+            post.commentsAmount = Int64(i.commentsAmount)
+            post.isLiked = false
                 
-                posts.append(post)
-            }
+            posts.append(post)
+        }
                 
-            if self.viewContext.hasChanges {
-                do {
-                    try self.viewContext.save()
-                } catch {
-                    self.viewContext.rollback()
-                    print(error)
-                }
+        if self.viewContext.hasChanges {
+            do {
+                try self.viewContext.save()
+            } catch {
+                self.viewContext.rollback()
+                print(error)
             }
         }
-        network.download()
     }
     
     func deleteAllPosts() {
