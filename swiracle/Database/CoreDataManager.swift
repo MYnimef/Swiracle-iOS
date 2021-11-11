@@ -75,4 +75,15 @@ class CoreDataManager {
             return []
         }
     }
+    
+    func getPostImages(_ post: Post) -> [ImageDB] {
+        let request: NSFetchRequest<ImageDB> = ImageDB.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(ImageDB.post), post)
+        
+        do {
+            return try viewContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
 }

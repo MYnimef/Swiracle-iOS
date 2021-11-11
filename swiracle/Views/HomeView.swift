@@ -25,13 +25,7 @@ struct HomeView: View {
                 Text("Following")
             }
             .padding()
-            List (self.postsDB, id: \.id) { i in PostView(
-                username: i.username ?? "",
-                title: i.title ?? "",
-                price: Int(i.price),
-                likesAmount: Int(i.likesAmount),
-                commentsAmount: Int(i.commentsAmount))
-            }
+            List (self.postsDB, id: \.id) { i in PostView(i) }
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
@@ -46,12 +40,35 @@ struct PostView: View {
     let price: Int
     let likesAmount: Int
     let commentsAmount: Int
+    var images: [ImageDB]
+    
+    init(_ post: Post) {
+        username = post.username ?? ""
+        title = post.title ?? ""
+        price = Int(post.price)
+        likesAmount = Int(post.likesAmount)
+        commentsAmount = Int(post.commentsAmount)
+        
+        images = CoreDataManager.shared.getPostImages(post)
+    }
     
     var body: some View {
         Section {
             VStack {
                 HStack {
                     Text(username)
+                }
+                HStack {
+                    ForEach(images, id: \.url) { i in
+                        /*
+                        AsyncImage(url: URL(string: i.url ?? "")) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 200, height: 200)
+                         */
+                    }
                 }
                 HStack {
                     Text(title)
