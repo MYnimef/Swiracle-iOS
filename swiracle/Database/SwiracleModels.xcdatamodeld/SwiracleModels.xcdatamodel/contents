@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Post" representedClassName="Post" syncable="YES" codeGenerationType="class">
+    <entity name="ImageDB" representedClassName=".ImageDB" syncable="YES" codeGenerationType="class">
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="images" inverseEntity="Post"/>
+    </entity>
+    <entity name="Post" representedClassName=".Post" syncable="YES" codeGenerationType="class">
         <attribute name="commentsAmount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="isLiked" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -8,8 +12,10 @@
         <attribute name="price" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="username" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageDB" inverseName="post" inverseEntity="ImageDB"/>
     </entity>
     <elements>
-        <element name="Post" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="Post" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="ImageDB" positionX="-63" positionY="36" width="128" height="59"/>
     </elements>
 </model>

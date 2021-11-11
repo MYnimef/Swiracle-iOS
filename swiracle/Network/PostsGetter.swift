@@ -53,20 +53,11 @@ class PostsGetter {
                 let fetch = try JSONDecoder().decode([PostJSON].self, from: data!)
                 
                 DispatchQueue.main.async {
-                    let post = fetch
-                    var postInfo = [PostInfoJSON]()
-                    for i in post {
-                        postInfo.append(i.postInfo)
-                    }
-                    self.sendToDB(posts: postInfo)
+                    CoreDataManager.shared.updateAllPosts(data: fetch)
                 }
             } catch {
                 print(error)
             }
         }.resume()
-    }
-    
-    func sendToDB(posts: [PostInfoJSON]) {
-        CoreDataManager.shared.updateAllPosts(data: posts)
     }
 }

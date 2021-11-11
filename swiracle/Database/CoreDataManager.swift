@@ -30,21 +30,24 @@ class CoreDataManager {
         network.download()
     }
     
-    func updateAllPosts(data: [PostInfoJSON]) {
+    func updateAllPosts(data: [PostJSON]) {
         self.deleteAllPosts()
             
-        var posts = [Post]()
         for i in data {
             let post = Post(context: self.viewContext)
-            post.id = i.id
-            post.username = i.username
-            post.title = i.title
-            post.price = Int64(i.price.rub)
-            post.likesAmount = Int64(i.likesAmount)
-            post.commentsAmount = Int64(i.commentsAmount)
+            post.id = i.postInfo.id
+            post.username = i.postInfo.username
+            post.title = i.postInfo.title
+            post.price = Int64(i.postInfo.price.rub)
+            post.likesAmount = Int64(i.postInfo.likesAmount)
+            post.commentsAmount = Int64(i.postInfo.commentsAmount)
             post.isLiked = false
-                
-            posts.append(post)
+            
+            for image in i.images {
+                let imageDB = ImageDB(context: self.viewContext)
+                imageDB.url = image.imageUrl
+                post.addToImages(imageDB)
+            }
         }
                 
         if self.viewContext.hasChanges {
