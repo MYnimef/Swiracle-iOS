@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     @FetchRequest(entity: Post.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
@@ -58,18 +59,7 @@ struct PostView: View {
                 HStack {
                     Text(username)
                 }
-                HStack {
-                    ForEach(images, id: \.url) { i in
-                        /*
-                        AsyncImage(url: URL(string: i.url ?? "")) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 200, height: 200)
-                         */
-                    }
-                }
+                ImagesView(images: images)
                 HStack {
                     Text(title)
                     Text(String(price))
@@ -82,6 +72,29 @@ struct PostView: View {
         }
         .listRowBackground(Color.white)
         .foregroundColor(.black)
+        .frame(width: 300, height: 500)
+        //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+    }
+}
+
+struct ImagesView: View {
+    var images: [ImageDB]
+    
+    var body: some View {
+        GeometryReader { metrics in
+            HStack {
+                ForEach(images, id: \.url) { i in
+                    AnimatedImage(url: URL(string: i.url ?? ""))
+                        .resizable()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        //.frame(width: 60, height: 60)
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                }
+                .frame(height: metrics.size.width * (5 / 4))
+                //.frame(width: 200, height: 200)
+                //.padding([.leading, .trailing], 20)
+            }
+        }
     }
 }
 

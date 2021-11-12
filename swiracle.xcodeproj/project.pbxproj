@@ -22,6 +22,7 @@
 		545F547D2732F38A002F9100 /* swiracleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F547C2732F38A002F9100 /* swiracleUITestsLaunchTests.swift */; };
 		545F548B2732F3FA002F9100 /* PostsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F548A2732F3FA002F9100 /* PostsGetter.swift */; };
 		54D38EC82733DEE900C30480 /* Lokalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54D38ECA2733DEE900C30480 /* Lokalization.strings */; };
+		54F32E11273DE379003F237A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54F32E10273DE379003F237A /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F32E11273DE379003F237A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +202,9 @@
 			dependencies = (
 			);
 			name = Swiracle;
+			packageProductDependencies = (
+				54F32E10273DE379003F237A /* SDWebImageSwiftUI */,
+			);
 			productName = swiracle;
 			productReference = 545F545C2732F384002F9100 /* Swiracle.app */;
 			productType = "com.apple.product-type.application";
@@ -273,6 +278,9 @@
 				ru,
 			);
 			mainGroup = 545F54532732F384002F9100;
+			packageReferences = (
+				54F32E0F273DE379003F237A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 545F545D2732F384002F9100 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -507,7 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,7 +545,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,6 +695,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54F32E0F273DE379003F237A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54F32E10273DE379003F237A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54F32E0F273DE379003F237A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		54310A2B273AD2DD00C57CB9 /* SwiracleModels.xcdatamodeld */ = {
