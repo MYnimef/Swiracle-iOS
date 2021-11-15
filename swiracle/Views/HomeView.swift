@@ -9,7 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct HomeView: View {
-    @FetchRequest(entity: Post.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
+    @FetchRequest(entity: Post.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
     var postsDB: FetchedResults<Post>
     
     init() {
@@ -36,65 +37,108 @@ struct HomeView: View {
 }
 
 struct PostView: View {
+    let id: String
     let username: String
     let title: String
     let price: Int
     let likesAmount: Int
     let commentsAmount: Int
-    var images: [ImageDB]
+    let images: [ImageDB]
     
     init(_ post: Post) {
+        id = post.id ?? ""
         username = post.username ?? ""
         title = post.title ?? ""
         price = Int(post.price)
         likesAmount = Int(post.likesAmount)
         commentsAmount = Int(post.commentsAmount)
-        
         images = CoreDataManager.shared.getPostImages(post)
     }
     
     var body: some View {
         Section {
             VStack {
-                HStack {
-                    Text(username)
+                VStack {
+                    HStack {
+                        Text("@" + username)
+                    }
+                    ImagesView(images: images)
+
+                    HStack {
+                        Text(title)
+                        Text(String(price))
+                    }
                 }
-                ImagesView(images: images)
-                HStack {
-                    Text(title)
-                    Text(String(price))
-                }
-                HStack {
-                    Text(String(likesAmount))
-                    Text(String(commentsAmount))
-                }
+                .background(Color.white)
+                .cornerRadius(32)
+                BottomButtonsView(
+                    id: id,
+                    likesAmount: likesAmount,
+                    commentsAmount: commentsAmount
+                )
             }
         }
-        .listRowBackground(Color.white)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color(UIColor(named: "BackgroundColor")!))
         .foregroundColor(.black)
-        .frame(width: 300, height: 500)
-        //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        //.frame(minWidth: 0, maxWidth: .infinity)
     }
 }
 
 struct ImagesView: View {
-    var images: [ImageDB]
+    let images: [ImageDB]
     
     var body: some View {
-        GeometryReader { metrics in
-            HStack {
-                ForEach(images, id: \.url) { i in
-                    AnimatedImage(url: URL(string: i.url ?? ""))
-                        .resizable()
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        //.frame(width: 60, height: 60)
-                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                }
-                .frame(height: metrics.size.width * (5 / 4))
-                //.frame(width: 200, height: 200)
-                //.padding([.leading, .trailing], 20)
+        HStack {
+            ForEach(images, id: \.url) { i in
+                AnimatedImage(url: URL(string: i.url ?? ""))
+                    .resizable()
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+            }
+            .padding([.leading, .trailing], 10)
+        }
+        .frame(height: (UIScreen.main.bounds.size.width - 40) * (5/4))
+    }
+}
+
+struct BottomButtonsView: View {
+    let id: String
+    let likesAmount: Int
+    let commentsAmount: Int
+    
+    let iconSize: CGFloat = 24
+    
+    var body: some View {
+        HStack {
+            Button(action: {
+                //TODO
+            }) {
+                Image(systemName: "heart")
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+            }
+            Text(String(likesAmount))
+            Spacer()
+            Button(action: {
+                //TODO
+            }) {
+                Image(systemName: "bubble.left")
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+            }
+            Text(String(commentsAmount))
+            Spacer()
+            Spacer()
+            Button(action: {
+                //TODO
+            }) {
+                Image(systemName: "arrowshape.turn.up.right.fill")
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
             }
         }
+        .padding([.leading, .trailing], 20)
     }
 }
 
