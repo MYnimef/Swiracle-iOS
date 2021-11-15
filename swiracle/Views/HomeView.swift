@@ -25,16 +25,35 @@ struct HomeView: View {
                 Button(action: {
                     //TODO
                 }) {
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
+                }
+                Spacer()
+                Button(action: {
+                    //TODO
+                }) {
                     Text("For you")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                 }
                 Text("|")
                     .padding([.leading, .trailing], 8)
+                    .foregroundColor(.gray)
                 Button(action: {
                     //TODO
                 }) {
                     Text("Following")
                         .foregroundColor(.gray)
+                }
+                Spacer()
+                Button(action: {
+                    //TODO
+                }) {
+                    Image(systemName: "message.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
                 }
             }
             .padding()
@@ -42,7 +61,7 @@ struct HomeView: View {
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
-            .cornerRadius(10)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
 }
@@ -72,19 +91,35 @@ struct PostView: View {
                 VStack {
                     Spacer(minLength: 10)
                     HStack {
-                        Text("@" + username)
+                        Button(action: {
+                            //TODO
+                        }) {
+                            HStack {
+                                Image(systemName: "person.fill")
+                                Text("@" + username)
+                            }
+                        }
+                        Spacer()
+                        Button(action: {
+                            //TODO
+                        }) {
+                            Image(systemName: "ellipsis")
+                        }
                     }
+                    .padding([.leading, .trailing], 32)
                     ImagesView(images: images)
                     HStack {
                         Text(title)
+                            .font(.system(size: 15))
                         Spacer()
                         Text(String(price) + " RUB")
+                            .font(.system(size: 15))
                     }
                     .padding([.leading, .trailing], 32)
                     Spacer(minLength: 10)
                 }
                 .background(Color.white)
-                .cornerRadius(32)
+                .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 Spacer()
                 BottomButtonsView(
                     id: id,
@@ -101,18 +136,23 @@ struct PostView: View {
 
 struct ImagesView: View {
     let images: [ImageDB]
+    let imageWidth = UIScreen.main.bounds.size.width - 50
+    let imageHeight = (UIScreen.main.bounds.size.width - 50) * (5/4)
     
     var body: some View {
-        HStack {
-            ForEach(images, id: \.url) { i in
-                AnimatedImage(url: URL(string: i.url ?? ""))
-                    .resizable()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 0) {
+                ForEach(images, id: \.url) { i in
+                    AnimatedImage(url: URL(string: i.url ?? ""))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: imageWidth, height: imageHeight)
+                        .clipped()
+                }
             }
-            .padding([.leading, .trailing], 10)
         }
-        .frame(height: (UIScreen.main.bounds.size.width - 40) * (5/4))
+        .frame(width: imageWidth, height: imageHeight)
+        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
     }
 }
 
