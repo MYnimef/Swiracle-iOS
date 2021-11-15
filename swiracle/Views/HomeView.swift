@@ -16,15 +16,26 @@ struct HomeView: View {
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
         UITableView.appearance().backgroundColor = UIColor(named: "BackgroundColor")
-        
         CoreDataManager.shared.downloadAllPosts()
     }
     
     var body: some View {
         VStack {
             HStack {
-                Text("For you")
-                Text("Following")
+                Button(action: {
+                    //TODO
+                }) {
+                    Text("For you")
+                        .foregroundColor(.gray)
+                }
+                Text("|")
+                    .padding([.leading, .trailing], 8)
+                Button(action: {
+                    //TODO
+                }) {
+                    Text("Following")
+                        .foregroundColor(.gray)
+                }
             }
             .padding()
             List (self.postsDB, id: \.id) { i in PostView(i) }
@@ -59,18 +70,22 @@ struct PostView: View {
         Section {
             VStack {
                 VStack {
+                    Spacer(minLength: 10)
                     HStack {
                         Text("@" + username)
                     }
                     ImagesView(images: images)
-
                     HStack {
                         Text(title)
-                        Text(String(price))
+                        Spacer()
+                        Text(String(price) + " RUB")
                     }
+                    .padding([.leading, .trailing], 32)
+                    Spacer(minLength: 10)
                 }
                 .background(Color.white)
                 .cornerRadius(32)
+                Spacer()
                 BottomButtonsView(
                     id: id,
                     likesAmount: likesAmount,
@@ -81,7 +96,6 @@ struct PostView: View {
         .listRowInsets(EdgeInsets())
         .listRowBackground(Color(UIColor(named: "BackgroundColor")!))
         .foregroundColor(.black)
-        //.frame(minWidth: 0, maxWidth: .infinity)
     }
 }
 
