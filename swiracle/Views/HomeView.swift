@@ -13,6 +13,8 @@ struct HomeView: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
     var postsDB: FetchedResults<Post>
     
+    @State var show = false
+    
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
         UITableView.appearance().backgroundColor = UIColor(named: "BackgroundColor")
@@ -27,15 +29,16 @@ struct HomeView: View {
                 }) {
                     Image(systemName: "magnifyingglass")
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24)
                         .foregroundColor(.white)
                 }
                 Spacer()
                 Button(action: {
                     //TODO
                 }) {
-                    Text("For you")
-                        .foregroundColor(.white)
+                    Text("Following")
+                        .foregroundColor(.gray)
                 }
                 Text("|")
                     .padding([.leading, .trailing], 8)
@@ -43,8 +46,8 @@ struct HomeView: View {
                 Button(action: {
                     //TODO
                 }) {
-                    Text("Following")
-                        .foregroundColor(.gray)
+                    Text("For you")
+                        .foregroundColor(.white)
                 }
                 Spacer()
                 Button(action: {
@@ -52,17 +55,28 @@ struct HomeView: View {
                 }) {
                     Image(systemName: "message.fill")
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24)
                         .foregroundColor(.white)
                 }
             }
-            .padding()
-            List (self.postsDB, id: \.id) { i in PostView(i) }
+            .padding([.leading, .trailing], 32)
+            .padding(.top, 10)
+            List (self.postsDB, id: \.id) { i in
+                PostView(i, showPostView)
+            }
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
+            .sheet(isPresented: $show) {
+                SearchView()
+            }
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
+    }
+    
+    func showPostView() {
+        show.toggle()
     }
 }
 
@@ -75,7 +89,9 @@ struct PostView: View {
     let commentsAmount: Int
     let images: [ImageDB]
     
-    init(_ post: Post) {
+    let show: () -> ()
+    
+    init(_ post: Post, _ show: @escaping () -> ()) {
         id = post.id ?? ""
         username = post.username ?? ""
         title = post.title ?? ""
@@ -83,6 +99,8 @@ struct PostView: View {
         likesAmount = Int(post.likesAmount)
         commentsAmount = Int(post.commentsAmount)
         images = CoreDataManager.shared.getPostImages(post)
+        
+        self.show = show
     }
     
     var body: some View {
@@ -107,16 +125,26 @@ struct PostView: View {
                         }
                     }
                     .padding([.leading, .trailing], 32)
-                    ImagesView(images: images)
-                    HStack {
-                        Text(title)
-                            .font(.system(size: 15))
-                        Spacer()
-                        Text(String(price) + " RUB")
-                            .font(.system(size: 15))
+                    Button(
+                        action: {},
+                        label: {
+                            VStack {
+                                ImagesView(images: images)
+                                HStack {
+                                    Text(title)
+                                        .font(.system(size: 15))
+                                    Spacer()
+                                    Text(String(price) + " RUB")
+                                        .font(.system(size: 15))
+                                }
+                                .padding([.leading, .trailing], 32)
+                                Spacer(minLength: 10)
+                            }
+                        }
+                    )
+                    .onTapGesture {
+                        show()
                     }
-                    .padding([.leading, .trailing], 32)
-                    Spacer(minLength: 10)
                 }
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
@@ -170,6 +198,7 @@ struct BottomButtonsView: View {
             }) {
                 Image(systemName: "heart")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: iconSize, height: iconSize)
             }
             Text(String(likesAmount))
@@ -179,6 +208,7 @@ struct BottomButtonsView: View {
             }) {
                 Image(systemName: "bubble.left")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: iconSize, height: iconSize)
             }
             Text(String(commentsAmount))
@@ -189,6 +219,7 @@ struct BottomButtonsView: View {
             }) {
                 Image(systemName: "arrowshape.turn.up.right.fill")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: iconSize, height: iconSize)
             }
         }
