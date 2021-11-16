@@ -63,13 +63,13 @@ struct HomeView: View {
             .padding([.leading, .trailing], 32)
             .padding(.top, 10)
             List (self.postsDB, id: \.id) { i in
-                PostView(i, showPostView)
+                PostViewRow(i, showPostView)
             }
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
             .sheet(isPresented: $show) {
-                SearchView()
+                PostView()
             }
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
@@ -80,11 +80,12 @@ struct HomeView: View {
     }
 }
 
-struct PostView: View {
+struct PostViewRow: View {
     let id: String
     let username: String
     let title: String
     let price: Int
+    let isLiked: Bool = false
     let likesAmount: Int
     let commentsAmount: Int
     let images: [ImageDB]
@@ -125,23 +126,18 @@ struct PostView: View {
                         }
                     }
                     .padding([.leading, .trailing], 32)
-                    Button(
-                        action: {},
-                        label: {
-                            VStack {
-                                ImagesView(images: images)
-                                HStack {
-                                    Text(title)
-                                        .font(.system(size: 15))
-                                    Spacer()
-                                    Text(String(price) + " RUB")
-                                        .font(.system(size: 15))
-                                }
-                                .padding([.leading, .trailing], 32)
-                                Spacer(minLength: 10)
-                            }
+                    VStack {
+                        ImagesView(images: images)
+                        HStack {
+                            Text(title)
+                                .font(.system(size: 15))
+                            Spacer()
+                            Text(String(price) + " RUB")
+                                .font(.system(size: 15))
                         }
-                    )
+                        .padding([.leading, .trailing], 32)
+                        Spacer(minLength: 10)
+                    }
                     .onTapGesture {
                         show()
                     }
@@ -151,6 +147,7 @@ struct PostView: View {
                 Spacer()
                 BottomButtonsView(
                     id: id,
+                    isLiked: isLiked,
                     likesAmount: likesAmount,
                     commentsAmount: commentsAmount
                 )
@@ -186,6 +183,7 @@ struct ImagesView: View {
 
 struct BottomButtonsView: View {
     let id: String
+    @State var isLiked: Bool
     let likesAmount: Int
     let commentsAmount: Int
     
@@ -193,14 +191,13 @@ struct BottomButtonsView: View {
     
     var body: some View {
         HStack {
-            Button(action: {
-                //TODO
-            }) {
-                Image(systemName: "heart")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: iconSize, height: iconSize)
-            }
+            Image(systemName: isLiked ? "heart.fill" : "heart")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: iconSize, height: iconSize)
+                .onTapGesture {
+                    isLiked.toggle()
+                }
             Text(String(likesAmount))
             Spacer()
             Button(action: {
