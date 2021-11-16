@@ -13,7 +13,8 @@ struct HomeView: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
     var postsDB: FetchedResults<Post>
     
-    @State var show = false
+    @State var showPost = false
+    @State var showProfile = false
     
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -63,20 +64,27 @@ struct HomeView: View {
             .padding([.leading, .trailing], 32)
             .padding(.top, 10)
             List (self.postsDB, id: \.id) { i in
-                PostViewRow(i, showPostView)
+                PostViewRow(i, showPostView, showProfileView)
             }
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
-            .sheet(isPresented: $show) {
+            .sheet(isPresented: $showPost) {
                 PostView()
+            }
+            .sheet(isPresented: $showProfile) {
+                ProfileView()
             }
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
     
     func showPostView() {
-        show.toggle()
+        showPost.toggle()
+    }
+    
+    func showProfileView() {
+        showProfile.toggle()
     }
 }
 
@@ -90,9 +98,10 @@ struct PostViewRow: View {
     let commentsAmount: Int
     let images: [ImageDB]
     
-    let show: () -> ()
+    let showPost: () -> ()
+    let showProfile: () -> ()
     
-    init(_ post: Post, _ show: @escaping () -> ()) {
+    init(_ post: Post, _ showPost: @escaping () -> (), _ showProfile: @escaping () -> ()) {
         id = post.id ?? ""
         username = post.username ?? ""
         title = post.title ?? ""
@@ -101,31 +110,31 @@ struct PostViewRow: View {
         commentsAmount = Int(post.commentsAmount)
         images = CoreDataManager.shared.getPostImages(post)
         
-        self.show = show
+        self.showPost = showPost
+        self.showProfile = showProfile
     }
     
     var body: some View {
         Section {
             VStack {
                 VStack {
-                    Spacer(minLength: 10)
+                    Spacer(minLength: 16)
                     HStack {
-                        Button(action: {
-                            //TODO
-                        }) {
-                            HStack {
-                                Image(systemName: "person.fill")
-                                Text("@" + username)
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("@" + username)
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            showProfile()
+                        }
+                        Image(systemName: "ellipsis")
+                            .onTapGesture {
+                                //TODO
                             }
-                        }
-                        Spacer()
-                        Button(action: {
-                            //TODO
-                        }) {
-                            Image(systemName: "ellipsis")
-                        }
                     }
                     .padding([.leading, .trailing], 32)
+                    Spacer(minLength: 16)
                     VStack {
                         ImagesView(images: images)
                         HStack {
@@ -139,12 +148,12 @@ struct PostViewRow: View {
                         Spacer(minLength: 10)
                     }
                     .onTapGesture {
-                        show()
+                        showPost()
                     }
                 }
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
-                Spacer()
+                Spacer(minLength: 16)
                 BottomButtonsView(
                     id: id,
                     isLiked: isLiked,
