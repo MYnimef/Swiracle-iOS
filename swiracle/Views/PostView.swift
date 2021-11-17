@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct PostView: View {
+    init(_ post: Post) {
+        
+    }
+    
     var body: some View {
         VStack {
             Text("Post")
@@ -15,8 +19,10 @@ struct PostView: View {
     }
 }
 
+/*
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
     }
 }
+*/

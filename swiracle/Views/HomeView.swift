@@ -11,10 +11,11 @@ import SDWebImageSwiftUI
 struct HomeView: View {
     @FetchRequest(entity: Post.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
-    var postsDB: FetchedResults<Post>
+    private var postsDB: FetchedResults<Post>
     
-    @State var showPost = false
-    @State var showProfile = false
+    @State private var showPost = false
+    @State private var post: Post? = nil
+    @State private var showProfile = false
     
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -69,8 +70,8 @@ struct HomeView: View {
             .refreshable {
                 CoreDataManager.shared.downloadAllPosts()
             }
-            .sheet(isPresented: $showPost) {
-                PostView()
+            .sheet(item: $post) { post in
+                PostView(post)
             }
             .sheet(isPresented: $showProfile) {
                 ProfileView()
@@ -79,7 +80,8 @@ struct HomeView: View {
         }
     }
     
-    func showPostView() {
+    func showPostView(postToShow: Post) {
+        post = postToShow
         showPost.toggle()
     }
     
@@ -89,27 +91,12 @@ struct HomeView: View {
 }
 
 struct PostViewRow: View {
-    let id: String
-    let username: String
-    let title: String
-    let price: Int
-    let isLiked: Bool = false
-    let likesAmount: Int
-    let commentsAmount: Int
-    let images: [ImageDB]
-    
-    let showPost: () -> ()
+    let post: Post
+    let showPost: (_ postToShow: Post) -> ()
     let showProfile: () -> ()
     
-    init(_ post: Post, _ showPost: @escaping () -> (), _ showProfile: @escaping () -> ()) {
-        id = post.id ?? ""
-        username = post.username ?? ""
-        title = post.title ?? ""
-        price = Int(post.price)
-        likesAmount = Int(post.likesAmount)
-        commentsAmount = Int(post.commentsAmount)
-        images = CoreDataManager.shared.getPostImages(post)
-        
+    init(_ post: Post, _ showPost: @escaping (_ postToShow: Post) -> (), _ showProfile: @escaping () -> ()) {
+        self.post = post
         self.showPost = showPost
         self.showProfile = showProfile
     }
@@ -118,53 +105,78 @@ struct PostViewRow: View {
         Section {
             VStack {
                 VStack {
-                    Spacer(minLength: 16)
-                    HStack {
-                        HStack {
-                            Image(systemName: "person.fill")
-                            Text("@" + username)
-                            Spacer()
-                        }
-                        .onTapGesture {
-                            showProfile()
-                        }
-                        Image(systemName: "ellipsis")
-                            .onTapGesture {
-                                //TODO
-                            }
-                    }
-                    .padding([.leading, .trailing], 32)
-                    Spacer(minLength: 16)
-                    VStack {
-                        ImagesView(images: images)
-                        HStack {
-                            Text(title)
-                                .font(.system(size: 15))
-                            Spacer()
-                            Text(String(price) + " RUB")
-                                .font(.system(size: 15))
-                        }
-                        .padding([.leading, .trailing], 32)
-                        Spacer(minLength: 10)
-                    }
+                    PostRowTopView(username: post.username ?? "")
                     .onTapGesture {
-                        showPost()
+                        showProfile()
+                    }
+                    PostRowBottomView(
+                        images: CoreDataManager.shared.getPostImages(post),
+                        title: post.title ?? "",
+                        price: Int(post.price))
+                    .onTapGesture {
+                        showPost(post)
                     }
                 }
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 Spacer(minLength: 16)
                 BottomButtonsView(
-                    id: id,
-                    isLiked: isLiked,
-                    likesAmount: likesAmount,
-                    commentsAmount: commentsAmount
+                    id: post.id ?? "",
+                    isLiked: post.isLiked,
+                    likesAmount: Int(post.likesAmount),
+                    commentsAmount: Int(post.commentsAmount)
                 )
             }
         }
         .listRowInsets(EdgeInsets())
         .listRowBackground(Color(UIColor(named: "BackgroundColor")!))
         .foregroundColor(.black)
+    }
+}
+
+struct PostRowTopView: View {
+    let username: String
+    let iconSize: CGFloat = 20
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "person.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: iconSize, height: iconSize)
+            Text("@" + username)
+            Spacer()
+            Image(systemName: "ellipsis")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: iconSize, height: iconSize)
+                .onTapGesture {
+                    //TODO
+                }
+        }
+        .padding([.leading, .trailing], 32)
+        .padding([.top], 16)
+    }
+}
+
+struct PostRowBottomView: View {
+    let images: [ImageDB]
+    let title: String
+    let price: Int
+    
+    var body: some View {
+        VStack {
+            ImagesView(images: images)
+            HStack {
+                Text(title)
+                    .font(.system(size: 15))
+                Spacer()
+                Text(String(price) + " RUB")
+                    .font(.system(size: 15))
+            }
+            .padding([.leading, .trailing], 32)
+            Spacer(minLength: 10)
+        }
     }
 }
 
