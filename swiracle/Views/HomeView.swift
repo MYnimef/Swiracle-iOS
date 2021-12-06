@@ -186,19 +186,21 @@ struct ImagesView: View {
     let imageHeight = (UIScreen.main.bounds.size.width - 50) * (5/4)
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 0) {
-                ForEach(images, id: \.url) { i in
-                    AnimatedImage(url: URL(string: i.url ?? ""))
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: imageWidth, height: imageHeight)
-                        .clipped()
-                }
-            }
-        }
-        .frame(width: imageWidth, height: imageHeight)
-        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                        TabView {
+                            ForEach(images, id: \.url) { i in
+                                AnimatedImage(url: URL(string: i.url ?? ""))
+                                       .resizable()
+                                       .scaledToFill()
+                                       .clipped()
+                                       .frame(width: imageHeight).background(Color.red)
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                        .frame(minHeight: imageHeight)
+                        .id(images.count)
+                        .padding()
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+        Text("test")
     }
 }
 
