@@ -64,19 +64,21 @@ struct HomeView: View {
             }
             .padding([.leading, .trailing], 32)
             .padding(.top, 10)
-            List (self.postsDB, id: \.id) { i in
-                PostViewRow(i, showPostView, showProfileView)
+            ScrollView{
+                ForEach (self.postsDB, id: \.id) { i in
+                    PostViewRow(i, showPostView, showProfileView)
+                }
+                .refreshable {
+                    CoreDataManager.shared.downloadAllPosts()
+                }
+                .sheet(item: $post) { post in
+                    PostView(post)
+                }
+                .sheet(isPresented: $showProfile) {
+                    ProfileView()
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
-            .refreshable {
-                CoreDataManager.shared.downloadAllPosts()
-            }
-            .sheet(item: $post) { post in
-                PostView(post)
-            }
-            .sheet(isPresented: $showProfile) {
-                ProfileView()
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
     
@@ -200,7 +202,6 @@ struct ImagesView: View {
                         .id(images.count)
                         .padding()
                         .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-        Text("test")
     }
 }
 
