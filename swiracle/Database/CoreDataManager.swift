@@ -8,7 +8,9 @@
 import Foundation
 import CoreData
 
+
 class CoreDataManager {
+    
     public static let shared = CoreDataManager()
     private let persistentContainer: NSPersistentContainer
     public var viewContext: NSManagedObjectContext {

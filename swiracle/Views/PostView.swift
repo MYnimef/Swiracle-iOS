@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct PostView: View {
+    
     init(_ post: Post) {
         
     }

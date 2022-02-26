@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct PopularView: View {
+    
     var body: some View {
         VStack {
             Text("Popular")
@@ -15,7 +17,9 @@ struct PopularView: View {
     }
 }
 
+
 struct PopularView_Previews: PreviewProvider {
+    
     static var previews: some View {
         PopularView()
     }

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
     init() {
         //UITabBar.appearance().barTintColor = .black
         //UITabBar.appearance().tintColor = .blue
@@ -47,6 +49,7 @@ struct ContentView: View {
     }
 }
 
+
 struct CreateView: View {
     var body: some View {
         VStack {
@@ -54,6 +57,7 @@ struct CreateView: View {
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

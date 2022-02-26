@@ -7,10 +7,15 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import MapKit
+
 
 struct HomeView: View {
-    @FetchRequest(entity: Post.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)])
+    
+    @FetchRequest(
+        entity: Post.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Post.id, ascending: false)]
+    )
     private var postsDB: FetchedResults<Post>
     
     @State private var showPost = false
@@ -80,22 +85,28 @@ struct HomeView: View {
         }
     }
     
-    func showPostView(postToShow: Post) {
+    private func showPostView(postToShow: Post) {
         post = postToShow
         showPost.toggle()
     }
     
-    func showProfileView() {
+    private func showProfileView() {
         showProfile.toggle()
     }
 }
 
-struct PostViewRow: View {
-    let post: Post
-    let showPost: (_ postToShow: Post) -> ()
-    let showProfile: () -> ()
+
+fileprivate struct PostViewRow: View {
     
-    init(_ post: Post, _ showPost: @escaping (_ postToShow: Post) -> (), _ showProfile: @escaping () -> ()) {
+    private let post: Post
+    private let showPost: (_ postToShow: Post) -> ()
+    private let showProfile: () -> ()
+    
+    fileprivate init(
+        _ post: Post,
+        _ showPost: @escaping (_ postToShow: Post) -> (),
+        _ showProfile: @escaping () -> ()
+    ) {
         self.post = post
         self.showPost = showPost
         self.showProfile = showProfile
@@ -134,9 +145,16 @@ struct PostViewRow: View {
     }
 }
 
-struct PostRowTopView: View {
-    let username: String
-    let iconSize: CGFloat = 20
+
+fileprivate struct PostRowTopView: View {
+    
+    private let username: String
+    private let iconSize: CGFloat
+    
+    fileprivate init(username: String) {
+        self.username = username
+        self.iconSize = 20
+    }
     
     var body: some View {
         HStack {
@@ -159,14 +177,27 @@ struct PostRowTopView: View {
     }
 }
 
-struct PostRowBottomView: View {
-    let images: [ImageDB]
-    let title: String
-    let price: Int
+
+fileprivate struct PostRowBottomView: View {
+    
+    private let images: [ImageDB]
+    private let title: String
+    private let price: Int
+    
+    fileprivate init(images: [ImageDB], title: String, price: Int) {
+        self.images = images
+        self.title = title
+        self.price = price
+    }
     
     var body: some View {
         VStack {
-            ImagesView(images: images)
+            if images.count == 1 {
+                SingleImageView(image: images[0])
+            } else {
+                MultipleImagesView(images: images)
+            }
+            //MultipleImagesView(images: images)
             HStack {
                 Text(title)
                     .font(.system(size: 15))
@@ -180,10 +211,41 @@ struct PostRowBottomView: View {
     }
 }
 
-struct ImagesView: View {
-    let images: [ImageDB]
-    let imageWidth = UIScreen.main.bounds.size.width - 50
-    let imageHeight = (UIScreen.main.bounds.size.width - 50) * (5/4)
+
+fileprivate struct SingleImageView: View {
+    
+    private let image: ImageDB
+    private let imageWidth: CGFloat
+    private let imageHeight: CGFloat
+    
+    fileprivate init(image: ImageDB) {
+        self.image = image;
+        self.imageWidth = UIScreen.main.bounds.size.width - 50
+        self.imageHeight = (UIScreen.main.bounds.size.width - 50) * (5/4)
+    }
+    
+    var body: some View {
+        AnimatedImage(url: URL(string: image.url ?? ""))
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: imageWidth, height: imageHeight)
+            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+    }
+}
+
+
+fileprivate struct MultipleImagesView: View {
+    
+    private let images: [ImageDB]
+    private let imageWidth: CGFloat
+    private let imageHeight: CGFloat
+    
+    fileprivate init(images: [ImageDB]) {
+        self.images = images;
+        self.imageWidth = UIScreen.main.bounds.size.width - 50
+        self.imageHeight = (UIScreen.main.bounds.size.width - 50) * (5/4)
+    }
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -202,13 +264,31 @@ struct ImagesView: View {
     }
 }
 
-struct BottomButtonsView: View {
-    let id: String
-    @State var isLiked: Bool
-    let likesAmount: Int
-    let commentsAmount: Int
+
+fileprivate struct BottomButtonsView: View {
     
-    let iconSize: CGFloat = 24
+    private let id: String
+    
+    @State
+    private var isLiked: Bool
+    
+    private let likesAmount: Int
+    private let commentsAmount: Int
+    
+    private let iconSize: CGFloat
+    
+    fileprivate init(
+        id: String,
+        isLiked: Bool,
+        likesAmount: Int,
+        commentsAmount: Int
+    ) {
+        self.id = id
+        self.isLiked = isLiked
+        self.likesAmount = likesAmount
+        self.commentsAmount = commentsAmount
+        self.iconSize = 24
+    }
     
     var body: some View {
         HStack {
@@ -245,7 +325,9 @@ struct BottomButtonsView: View {
     }
 }
 
+
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
         HomeView()
     }
